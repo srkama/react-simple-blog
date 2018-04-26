@@ -1,0 +1,32 @@
+.post {
+    margin: 15px;
+    min-width: 100px;
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 2px 1px 5px grey;
+    height: 150px;
+    padding: 3px;
+}
+
+.selected {
+    background-color: oldlace;
+}
+
+.post div {
+    padding: 5px;
+}
+
+.post>.title {
+    font-weight: bold;
+    font-size: 14px;
+    color: dodgerblue;
+    text-align: left;
+    height: 80%;
+}
+
+.post>.author {
+    font-style: italic;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 5px
+}

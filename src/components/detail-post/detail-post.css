@@ -1,0 +1,16 @@
+.postDetail{
+    height: 400px;
+    margin-top: 20px
+}
+.postDetail .title {
+    font-weight: bold;
+    font-size: 20px;
+    font-style: initial
+}
+.postDetail .head {
+    height: 50px;
+    color: dodgerblue;
+}
+.postDetail .author {
+    font-style: italic;
+}
