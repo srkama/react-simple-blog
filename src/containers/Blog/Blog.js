@@ -3,6 +3,7 @@ import Aux from '../../components/hoc/aux';
 import PostList from '../../components/post-list/PostList';
 import DetailPost from '../../components/detail-post/DetailPost';
 import Axios from 'axios';
+import CreatePost from '../../components/create-post/CreatePost';
 
 
 
@@ -15,7 +16,7 @@ class Blog extends Component {
     }
 
     componentDidMount() {
-        Axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
+        Axios.get('/posts').then(response => {
             const updatedPost = response.data.map((post, key) => {
                 return {
                     ...post,
@@ -35,7 +36,7 @@ class Blog extends Component {
             <Aux>
                 <PostList postList={this.state.blogs} postClicked={this.postSelected} selectedPost={this.state.selectedPost}></PostList>
                 <DetailPost postID={this.state.selectedPost}></DetailPost>
-                <div>Create Blog </div>
+                <CreatePost></CreatePost>
             </Aux>
         )
     }

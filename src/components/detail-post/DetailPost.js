@@ -11,7 +11,7 @@ class DetailPost extends Component {
     componentDidUpdate() {
         if(this.props.postID) {
             if ((this.props.postID && !this.state.currentPost) || (this.state.currentPost && this.state.currentPost.id !== this.props.postID)) {
-                Axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.postID)
+                Axios.get('/posts/' + this.props.postID)
                 .then(response => {
                     this.setState({currentPost:response.data});
                 })

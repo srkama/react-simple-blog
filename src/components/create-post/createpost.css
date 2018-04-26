@@ -1,0 +1,25 @@
+.createPost {
+    width: 100%;
+    display: block;
+}
+
+.createPost > input,textarea, button {
+    width: 90%;
+}
+
+
+.createPost > textarea {
+    height: 100px;
+}
+
+.createPost > input {
+    height: 30px;
+}
+
+.createPost > button {
+    width: 50%;
+    height: 50px;
+    float: right;
+    margin-right: 70px;
+    margin-top:30px;
+}
