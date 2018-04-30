@@ -20,6 +20,7 @@ class CreatePost extends Component {
             .then(response=>{
                 if(response['status']===201) {
                     this.setState({title:'',body:'',author:''});
+                    this.props.history.push('/')
                 }
             });
     }

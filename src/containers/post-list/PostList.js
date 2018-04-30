@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
 import Post from '../../components/post/Post';
 import classes from './postlist.css';
 import Axios from 'axios';
@@ -11,6 +12,7 @@ class PostList extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         Axios.get('/posts').then(response => {
             const updatedPost = response.data.map((post, key) => {
                 return {
@@ -23,7 +25,7 @@ class PostList extends Component {
     }
 
     postSelected = (id) => {
-        this.setState({selectedPost:id});
+        this.props.history.push(this.props.match.url+"/"+id);
     }
 
     render() {
@@ -33,8 +35,8 @@ class PostList extends Component {
                     return <Post 
                             key={key} 
                             post={item} 
-                            postClicked={()=>this.postSelected(item.id)} 
-                            selected={item.id===this.state.selectedPost ? true : false}/>
+                            postClicked={()=>this.postSelected(item.id)}
+                            selected={item.id===this.state.selectedPost ? true : false}/> 
             })}
             </div>
         )

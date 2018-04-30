@@ -8,10 +8,11 @@ class DetailPost extends Component {
         currentPost: null
     }
 
-    componentDidUpdate() {
-        if(this.props.postID) {
-            if ((this.props.postID && !this.state.currentPost) || (this.state.currentPost && this.state.currentPost.id !== this.props.postID)) {
-                Axios.get('/posts/' + this.props.postID)
+    componentDidMount() {
+        let postID =  this.props.match.params.id;
+        if(postID) {
+            if ((postID && !this.state.currentPost) || (this.state.currentPost && this.state.currentPost.id !== postID)) {
+                Axios.get('/posts/' + postID)
                 .then(response => {
                     this.setState({currentPost:response.data});
                 })
@@ -22,7 +23,7 @@ class DetailPost extends Component {
     render() {
         let posts = <p>select a post to view</p>;
 
-        if(this.props.postID) {
+        if(this.props.match.params.id) {
             posts = <p>Loading!..</p>
         }
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Aux from '../../components/hoc/aux';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import PostList from '../post-list/PostList';
 import CreatePost from '../create-post/CreatePost';
+import DetailPost from '../detail-post/DetailPost';
 
 import classes from './blog.css';
 
@@ -31,9 +32,13 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Route path="/" exact component={PostList} />
-                <Route path="/new-post" exact component={CreatePost} />
-
+                <Switch>                  
+                    <Route path="/posts" exact component={PostList} />
+                    <Redirect from="/" exact to="/posts" />
+                    <Route path="/new-post" exact component={CreatePost} />
+                    <Route path="/posts/:id" component={DetailPost} />
+                    <Route render={()=><h1>The Required Mage is not found</h1>} />
+                </Switch>
                 {/* <PostList /> */}
                 {/* <DetailPost postID={this.state.selectedPost}></DetailPost> */}
                 {/* <CreatePost></CreatePost> */}
