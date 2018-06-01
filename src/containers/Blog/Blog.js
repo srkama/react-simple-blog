@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import Aux from '../../components/hoc/aux';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import PostList from '../post-list/PostList';
-import CreatePost from '../create-post/CreatePost';
+// import CreatePost from '../create-post/CreatePost';
 import DetailPost from '../detail-post/DetailPost';
 
+
 import classes from './blog.css';
+import asyncComponent from '../../components/hoc/asyncComponent';
 
-
+const AsyncCreatePost =  asyncComponent(()=>{
+    return import('../create-post/CreatePost');
+})
 
 class Blog extends Component {
 
@@ -35,7 +39,7 @@ class Blog extends Component {
                 <Switch>                  
                     <Route path="/posts" exact component={PostList} />
                     <Redirect from="/" exact to="/posts" />
-                    <Route path="/new-post" exact component={CreatePost} />
+                    <Route path="/new-post" exact component={AsyncCreatePost} />
                     <Route path="/posts/:id" component={DetailPost} />
                     <Route render={()=><h1>The Required Mage is not found</h1>} />
                 </Switch>
